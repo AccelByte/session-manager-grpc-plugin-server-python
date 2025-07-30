@@ -27,7 +27,7 @@ from accelbyte_grpc_plugin.app import (
 )
 from accelbyte_grpc_plugin.utils import instrument_sdk_http_client
 
-from .proto.session_manager_pb2_grpc import add_SessionManagerServicer_to_server
+from session_manager_pb2_grpc import add_SessionManagerServicer_to_server
 from .services.session_manager import AsyncSessionManager
 from .utils import create_env
 

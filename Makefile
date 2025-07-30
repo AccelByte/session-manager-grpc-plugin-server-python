@@ -4,23 +4,23 @@
 
 SHELL := /bin/bash
 
-IMAGE_NAME := $(shell basename "$$(pwd)")-app
+IMAGE_NAME ?= $(shell basename "$$(pwd)")-app
 BUILDER := extend-builder
 
-.PHONY: proto
+.PHONY: proto build
 
 proto:
-	docker run -t --rm -u $$(id -u):$$(id -g) \
-		-v $$(pwd):/build \
-		-w /build \
+	docker run --tty --rm --user $$(id -u):$$(id -g) \
+		--volume $$(pwd):/build \
+		--workdir /build \
 		--entrypoint /bin/bash \
-		rvolosatovs/protoc:4.0.0 \
+		rvolosatovs/protoc:4.1.0 \
 			proto.sh
 
 build: proto
 
 image:
-	docker buildx build -t ${IMAGE_NAME} --load .
+	docker build -t ${IMAGE_NAME} -f Dockerfile .
 
 imagex:
 	docker buildx inspect $(BUILDER) || docker buildx create --name $(BUILDER) --use
@@ -34,3 +34,8 @@ imagex_push:
 	docker buildx inspect $(BUILDER) || docker buildx create --name $(BUILDER) --use
 	docker buildx build -t ${REPO_URL}:${IMAGE_TAG} --platform linux/amd64 --push .
 	docker buildx rm --keep-state $(BUILDER)
+
+ngrok:
+	@which ngrok || (echo "ngrok is not installed" ; exit 1)
+	@test -n "$(NGROK_AUTHTOKEN)" || (echo "NGROK_AUTHTOKEN is not set" ; exit 1)
+	ngrok tcp 6565	# gRPC server port

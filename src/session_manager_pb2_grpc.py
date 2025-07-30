@@ -2,8 +2,8 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from app.proto import session_manager_pb2 as app_dot_proto_dot_session__manager__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
+import session_manager_pb2 as session__manager__pb2
 
 
 class SessionManagerStub(object):
@@ -17,32 +17,32 @@ class SessionManagerStub(object):
         """
         self.OnSessionCreated = channel.unary_unary(
                 '/accelbyte.session.manager.SessionManager/OnSessionCreated',
-                request_serializer=app_dot_proto_dot_session__manager__pb2.SessionCreatedRequest.SerializeToString,
-                response_deserializer=app_dot_proto_dot_session__manager__pb2.SessionResponse.FromString,
+                request_serializer=session__manager__pb2.SessionCreatedRequest.SerializeToString,
+                response_deserializer=session__manager__pb2.SessionResponse.FromString,
                 )
         self.OnSessionUpdated = channel.unary_unary(
                 '/accelbyte.session.manager.SessionManager/OnSessionUpdated',
-                request_serializer=app_dot_proto_dot_session__manager__pb2.SessionUpdatedRequest.SerializeToString,
+                request_serializer=session__manager__pb2.SessionUpdatedRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.OnSessionDeleted = channel.unary_unary(
                 '/accelbyte.session.manager.SessionManager/OnSessionDeleted',
-                request_serializer=app_dot_proto_dot_session__manager__pb2.SessionDeletedRequest.SerializeToString,
+                request_serializer=session__manager__pb2.SessionDeletedRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.OnPartyCreated = channel.unary_unary(
                 '/accelbyte.session.manager.SessionManager/OnPartyCreated',
-                request_serializer=app_dot_proto_dot_session__manager__pb2.PartyCreatedRequest.SerializeToString,
-                response_deserializer=app_dot_proto_dot_session__manager__pb2.PartyResponse.FromString,
+                request_serializer=session__manager__pb2.PartyCreatedRequest.SerializeToString,
+                response_deserializer=session__manager__pb2.PartyResponse.FromString,
                 )
         self.OnPartyUpdated = channel.unary_unary(
                 '/accelbyte.session.manager.SessionManager/OnPartyUpdated',
-                request_serializer=app_dot_proto_dot_session__manager__pb2.PartyUpdatedRequest.SerializeToString,
+                request_serializer=session__manager__pb2.PartyUpdatedRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.OnPartyDeleted = channel.unary_unary(
                 '/accelbyte.session.manager.SessionManager/OnPartyDeleted',
-                request_serializer=app_dot_proto_dot_session__manager__pb2.PartyDeletedRequest.SerializeToString,
+                request_serializer=session__manager__pb2.PartyDeletedRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
 
@@ -91,32 +91,32 @@ def add_SessionManagerServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'OnSessionCreated': grpc.unary_unary_rpc_method_handler(
                     servicer.OnSessionCreated,
-                    request_deserializer=app_dot_proto_dot_session__manager__pb2.SessionCreatedRequest.FromString,
-                    response_serializer=app_dot_proto_dot_session__manager__pb2.SessionResponse.SerializeToString,
+                    request_deserializer=session__manager__pb2.SessionCreatedRequest.FromString,
+                    response_serializer=session__manager__pb2.SessionResponse.SerializeToString,
             ),
             'OnSessionUpdated': grpc.unary_unary_rpc_method_handler(
                     servicer.OnSessionUpdated,
-                    request_deserializer=app_dot_proto_dot_session__manager__pb2.SessionUpdatedRequest.FromString,
+                    request_deserializer=session__manager__pb2.SessionUpdatedRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'OnSessionDeleted': grpc.unary_unary_rpc_method_handler(
                     servicer.OnSessionDeleted,
-                    request_deserializer=app_dot_proto_dot_session__manager__pb2.SessionDeletedRequest.FromString,
+                    request_deserializer=session__manager__pb2.SessionDeletedRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'OnPartyCreated': grpc.unary_unary_rpc_method_handler(
                     servicer.OnPartyCreated,
-                    request_deserializer=app_dot_proto_dot_session__manager__pb2.PartyCreatedRequest.FromString,
-                    response_serializer=app_dot_proto_dot_session__manager__pb2.PartyResponse.SerializeToString,
+                    request_deserializer=session__manager__pb2.PartyCreatedRequest.FromString,
+                    response_serializer=session__manager__pb2.PartyResponse.SerializeToString,
             ),
             'OnPartyUpdated': grpc.unary_unary_rpc_method_handler(
                     servicer.OnPartyUpdated,
-                    request_deserializer=app_dot_proto_dot_session__manager__pb2.PartyUpdatedRequest.FromString,
+                    request_deserializer=session__manager__pb2.PartyUpdatedRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'OnPartyDeleted': grpc.unary_unary_rpc_method_handler(
                     servicer.OnPartyDeleted,
-                    request_deserializer=app_dot_proto_dot_session__manager__pb2.PartyDeletedRequest.FromString,
+                    request_deserializer=session__manager__pb2.PartyDeletedRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
     }
@@ -141,8 +141,8 @@ class SessionManager(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.session.manager.SessionManager/OnSessionCreated',
-            app_dot_proto_dot_session__manager__pb2.SessionCreatedRequest.SerializeToString,
-            app_dot_proto_dot_session__manager__pb2.SessionResponse.FromString,
+            session__manager__pb2.SessionCreatedRequest.SerializeToString,
+            session__manager__pb2.SessionResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -158,7 +158,7 @@ class SessionManager(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.session.manager.SessionManager/OnSessionUpdated',
-            app_dot_proto_dot_session__manager__pb2.SessionUpdatedRequest.SerializeToString,
+            session__manager__pb2.SessionUpdatedRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -175,7 +175,7 @@ class SessionManager(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.session.manager.SessionManager/OnSessionDeleted',
-            app_dot_proto_dot_session__manager__pb2.SessionDeletedRequest.SerializeToString,
+            session__manager__pb2.SessionDeletedRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -192,8 +192,8 @@ class SessionManager(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.session.manager.SessionManager/OnPartyCreated',
-            app_dot_proto_dot_session__manager__pb2.PartyCreatedRequest.SerializeToString,
-            app_dot_proto_dot_session__manager__pb2.PartyResponse.FromString,
+            session__manager__pb2.PartyCreatedRequest.SerializeToString,
+            session__manager__pb2.PartyResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -209,7 +209,7 @@ class SessionManager(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.session.manager.SessionManager/OnPartyUpdated',
-            app_dot_proto_dot_session__manager__pb2.PartyUpdatedRequest.SerializeToString,
+            session__manager__pb2.PartyUpdatedRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -226,7 +226,7 @@ class SessionManager(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.session.manager.SessionManager/OnPartyDeleted',
-            app_dot_proto_dot_session__manager__pb2.PartyDeletedRequest.SerializeToString,
+            session__manager__pb2.PartyDeletedRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -12,7 +12,7 @@ from google.protobuf.json_format import MessageToJson
 from google.protobuf.empty_pb2 import Empty
 from google.protobuf.struct_pb2 import Struct
 
-from ..proto.session_manager_pb2 import (
+from session_manager_pb2 import (
     DESCRIPTOR,
     BaseSession,
     GameSession,
@@ -26,7 +26,7 @@ from ..proto.session_manager_pb2 import (
     SessionUpdatedRequest,
     SessionResponse,
 )
-from ..proto.session_manager_pb2_grpc import SessionManagerServicer
+from session_manager_pb2_grpc import SessionManagerServicer
 
 
 class AsyncSessionManager(SessionManagerServicer):
