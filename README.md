@@ -271,36 +271,37 @@ To test the app, which runs locally with AGS, the `gRPC server` needs to be conn
 
 ## Deploying
 
-After done testing, you may want to deploy this app to `AccelByte Gaming Services`.
+After completing testing, the next step is to deploy your app to `AccelByte Gaming Services`.
 
-1. [Create a new Extend Override App on Admin Portal](https://docs.accelbyte.io/gaming-services/services/extend/override/getting-started-with-cloudsave-validator-customization/#create-the-extend-app). Keep the `Repository URI`.
+1. **Create an Extend Override app**
 
-2. Download and setup [extend-helper-cli](https://github.com/AccelByte/extend-helper-cli/) (only if it has not been done previously).
+   If you do not already have one, create a new [Extend Override App](https://docs.accelbyte.io/gaming-services/services/extend/override/session-dedicated-server/get-started-session-dedicated-server/#create-the-extend-app).
 
-3. Perform docker login with `extend-helper-cli` using the following command.
+   On the **App Detail** page, take note of the following values.
+   - `Namespace`
+   - `App Name`
+
+   Under the **Environment Configuration** section, set the required secrets and/or variables.
+   - Secrets
+      - `AB_CLIENT_ID`
+      - `AB_CLIENT_SECRET`
+
+2. **Build and Push the Container Image**
+
+   Use [extend-helper-cli](https://github.com/AccelByte/extend-helper-cli) to build and upload the container image.
 
    ```
-   extend-helper-cli dockerlogin --namespace <my-namespace> --app <my-app> --login
+   extend-helper-cli image-upload --login --namespace <namespace> --app <app-name> --image-tag v0.0.1
    ```
 
-   > :exclamation: For your convenience, the above `extend-helper-cli` command can also be 
-   copied from `Repository Authentication Command` under the corresponding app detail page.
+   > :warning: Run this command from your project directory. If you are in a different directory, add the `--work-dir <project-dir>` option to specify the correct path.
 
-4. Build and push app docker image to AccelByte ECR using the following command.
+3. **Deploy the Image**
    
-   ```
-   extend-helper-cli image-upload --work-dir <my-project-dir> --namespace <my-namespace> -f Dockerfile --app <my-app> --image-tag v0.0.1
-   ```
-
-   > :warning: Make sure to perform docker login (step 3) before executing the above command.
-
-5. Open Admin Portal, go to **Extend** -> **Overridable Features**. And then select the extend app.
-
-6. To deploy selected image tag, click **Image Version History** and select desired image tag to be deployed.
-
-7. Click **Deploy Image**, confirm the deployment and go back to App Detail by clicking **Cancel**.
-
-8. Wait until app status is running.
+   On the **App Detail** page:
+   - Click **Image Version History**
+   - Select the image you just pushed
+   - Click **Deploy Image**
 
 ### Test Observability
 
