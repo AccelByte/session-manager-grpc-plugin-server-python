@@ -132,12 +132,6 @@ def create_options(sdk: AccelByteSDK, env: Env, logger: Logger) -> List[AppOptio
                 options.append(
                     AppOptionGRPCInterceptor(
                         interceptor=AuthorizationServerInterceptor(
-                            resource=env.str(
-                                "RESOURCE", DEFAULT_PLUGIN_GRPC_SERVER_AUTH_RESOURCE
-                            ),
-                            action=env.int(
-                                "ACTION", DEFAULT_PLUGIN_GRPC_SERVER_AUTH_ACTION
-                            ),
                             namespace=namespace,
                             token_validator=CachingTokenValidator(sdk=sdk),
                         )
