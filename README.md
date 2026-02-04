@@ -122,9 +122,9 @@ You can clone this repository to begin developing your own `Extend Override` app
       - For `Shared Cloud` tier e.g.  https://spaceshooter.prod.gamingservices.accelbyte.io
       - For `Private Cloud` tier e.g.  https://dev.accelbyte.io
       
-   b. [Create a Game Namespace](https://docs.accelbyte.io/gaming-services/services/access/reference/namespaces/manage-your-namespaces/) if you don't have one yet. Keep the `Namespace ID`.
+   b. [Create a Game Namespace](https://docs.accelbyte.io/gaming-services/modules/foundations/identity-access/namespaces/manage-your-namespaces/) if you don't have one yet. Keep the `Namespace ID`.
 
-   c. [Create an OAuth Client](https://docs.accelbyte.io/gaming-services/services/access/authorization/manage-access-control-for-applications/#create-an-iam-client) with confidential client type. Keep the `Client ID` and `Client Secret`.
+   c. [Create an OAuth Client](https://docs.accelbyte.io/gaming-services/modules/foundations/identity-access/authorization/manage-access-control-for-applications/#create-an-iam-client) with confidential client type. Keep the `Client ID` and `Client Secret`.
 
 ## Setup
 
@@ -255,7 +255,7 @@ To test the app, which runs locally with AGS, the `gRPC server` needs to be conn
    command in `grpc-plugin-dependencies` directory instead of this app directory and change tunnel local port from 6565 to 10000.
    This way, the `gRPC server` will be called via `Envoy` service within `grpc-plugin-dependencies` stack instead of directly.
 
-3. [Create an OAuth Client](https://docs.accelbyte.io/gaming-services/services/access/authorization/manage-access-control-for-applications/#create-an-iam-client) with `confidential` client type with the following permissions. Keep the `Client ID` and `Client Secret`.
+3. [Create an OAuth Client](https://docs.accelbyte.io/gaming-services/modules/foundations/identity-access/authorization/manage-access-control-for-applications/#create-an-iam-client) with `confidential` client type with the following permissions. Keep the `Client ID` and `Client Secret`.
 
    - For AGS Private Cloud customers:
       - ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [CREATE,READ,UPDATE,DELETE]
@@ -275,7 +275,7 @@ After completing testing, the next step is to deploy your app to `AccelByte Gami
 
 1. **Create an Extend Override app**
 
-   If you do not already have one, create a new [Extend Override App](https://docs.accelbyte.io/gaming-services/services/extend/override/session-dedicated-server/get-started-session-dedicated-server/#create-the-extend-app).
+   If you do not already have one, create a new [Extend Override App](https://docs.accelbyte.io/gaming-services/modules/foundations/extend/override/session-dedicated-server/get-started-session-dedicated-server/#create-the-extend-app).
 
    On the **App Detail** page, take note of the following values.
    - `Namespace`
@@ -339,4 +339,4 @@ will be accessible at http://localhost:3000.
 
 ## Next Step
 
-Proceed to create your own `Extend Override` app for `Session Manager function` by modifying this project. See [here](https://docs.accelbyte.io/gaming-services/services/extend/override/session-manager-function/) for more details.
+Proceed to create your own `Extend Override` app for `Session Manager function` by modifying this project. See [here](https://docs.accelbyte.io/gaming-services/modules/foundations/extend/override/session-manager-function/) for more details.
