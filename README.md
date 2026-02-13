@@ -339,4 +339,4 @@ will be accessible at http://localhost:3000.
 
 ## Next Step
 
-Proceed to create your own `Extend Override` app for `Session Manager function` by modifying this project. See [here](https://docs.accelbyte.io/gaming-services/modules/foundations/extend/override/session-manager-function/) for more details.
+Proceed to create your own `Extend Override` app for `Session Manager function` by modifying this project. See [here](https://docs.accelbyte.io/gaming-services/modules/foundations/extend/override/session-manager/customize-session-manager/) for more details.
